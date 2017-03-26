@@ -61,9 +61,10 @@ unsigned long calls_stats[NR_PM_CALLS];
 /*===========================================================================*
  *				do_helloworld				     *
  *===========================================================================*/
-int do_helloworld(){
+int do_helloworld()
+{
 
-  printf("haz llamado un system call. \n");
+  printf("haz llamado un system call.\n");
   return(OK);
 
 }
