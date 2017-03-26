@@ -2,9 +2,8 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int dohelloworld(){
-
+int dohelloworld()
+{
     message m;
-    return (_syscall(PM_PROC_NR, PM_HELLOWORLD, &m));
-
+    return (_syscall(PM_PROC_NR,PM_HELLOWORLD, &m));
 }
