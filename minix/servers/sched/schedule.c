@@ -381,7 +381,7 @@ void init_scheduling(void)
 	init_timer(&sched_timer);
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
 	read_tsc_64(&r);
-	//srand((unsigned)r);
+	srandom((unsigned)r.lo);
 }
 
 /*===========================================================================*
