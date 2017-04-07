@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <minix/u64.h>
+#include <minix/types.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
@@ -381,7 +382,7 @@ void init_scheduling(void)
 	init_timer(&sched_timer);
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
 	read_tsc_64(&r);
-	srand((unsigned)r);
+	srand((unsigned)r.lo);
 }
 
 /*===========================================================================*
