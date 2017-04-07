@@ -7,7 +7,7 @@
  *   do_nice		  Request to change the nice level on a proc
  *   init_scheduling      Called from main.c to set up/prepare scheduling
  */
-#include <stdio.h>
+#include <stdlib.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
