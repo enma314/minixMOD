@@ -9,6 +9,7 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
