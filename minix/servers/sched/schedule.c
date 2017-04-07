@@ -13,7 +13,6 @@
 #include "schedproc.h"
 #include <assert.h>
 #include <minix/com.h>
-#include <minix/u64.h>
 #include <minix/syslib.h>
 #include <machine/archtypes.h>
 #include "kernel/proc.h" /* for queue constants */
@@ -380,7 +379,7 @@ void init_scheduling(void)
 	init_timer(&sched_timer);
 	set_timer(&sched_timer, balance_timeout, balance_queues, 0);
 	read_tsc_64(&r);
-	srand((unsigned)r.lo);
+	srand((unsigned)r);
 }
 
 /*===========================================================================*
