@@ -1,4 +1,3 @@
-
 #define _MINIX_SYSTEM 1
 
 #include <stdarg.h>
@@ -123,7 +122,7 @@ static void do_uid(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_uid: just one uid/login expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
+	}
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -167,8 +166,8 @@ static void do_sigmgr(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_sigmgr: just one sigmgr value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -200,8 +199,8 @@ static void do_type(config_t *cpe, struct rs_config *rs_config)
 	{
 		fatal("do_type: just one type value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -231,8 +230,8 @@ static void do_descr(config_t *cpe, struct rs_config *rs_config)
 	{
 		fatal("do_descr: just one description expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -261,8 +260,8 @@ static void do_scheduler(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_scheduler: just one scheduler value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -298,8 +297,8 @@ static void do_priority(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_priority: just one priority value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -336,8 +335,8 @@ static void do_quantum(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_quantum: just one quantum value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -374,8 +373,8 @@ static void do_cpu(config_t *cpe, struct rs_start *rs_start)
 	{
 		fatal("do_cpu: just one value expected at %s:%d",
 			cpe->file, cpe->line);
-	}	
-	
+	}
+
 
 	if (cpe->flags & CFG_SUBLIST)
 	{
@@ -1171,4 +1170,3 @@ const char *parse_config(char *progname, int custom_config, char *req_config,
 
 	return NULL;
 }
-

@@ -59,8 +59,9 @@
 #define PM_GETPROCNR		(PM_BASE + 46)
 #define PM_GETSYSINFO		(PM_BASE + 47)
 #define PM_HELLOWORLD        (PM_BASE + 48)
+#define PM_MASBILLETES       (PM_BASE + 49)
 
-#define NR_PM_CALLS		49	/* highest number from base plus one */
+#define NR_PM_CALLS		50	/* highest number from base plus one */
 
 /*===========================================================================*
  *				Calls to VFS				     *

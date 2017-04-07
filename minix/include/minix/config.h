@@ -22,12 +22,12 @@
 #include <minix/sys_config.h>
 
 /* Number of slots in the process table for non-kernel processes. The number
- * of system processes defines how many processes with special privileges 
- * there can be. User processes share the same properties and count for one. 
+ * of system processes defines how many processes with special privileges
+ * there can be. User processes share the same properties and count for one.
  *
  * These can be changed in sys_config.h.
  */
-#define NR_PROCS 	  _NR_PROCS 
+#define NR_PROCS 	  _NR_PROCS
 #define NR_SYS_PROCS      _NR_SYS_PROCS
 #define NR_SYS_CHUNKS	  BITMAP_CHUNKS(NR_SYS_PROCS)
 
@@ -59,9 +59,9 @@
 /* Scheduling priorities. Values must start at zero (highest
  * priority) and increment.
  */
-#define NR_SCHED_QUEUES   16	/* MUST equal minimum priority + 1 */
+#define NR_SCHED_QUEUES   17	/* MUST equal minimum priority + 1 */
 #define TASK_Q		   0	/* highest, used for kernel tasks */
-#define MAX_USER_Q  	   0    /* highest priority for user processes */   
+#define MAX_USER_Q  	   0    /* highest priority for user processes */
 #define USER_Q  	  ((MIN_USER_Q - MAX_USER_Q) / 2 + MAX_USER_Q) /* default
 						(should correspond to nice 0) */
 #define MIN_USER_Q	  (NR_SCHED_QUEUES - 1)	/* minimum priority for user
