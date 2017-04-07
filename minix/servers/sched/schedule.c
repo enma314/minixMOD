@@ -9,11 +9,11 @@
  */
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
 #include <minix/com.h>
+#include <minix/u64.h>
 #include <minix/syslib.h>
 #include <machine/archtypes.h>
 #include "kernel/proc.h" /* for queue constants */
