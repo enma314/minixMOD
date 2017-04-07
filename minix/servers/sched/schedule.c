@@ -7,6 +7,7 @@
  *   do_nice		  Request to change the nice level on a proc
  *   init_scheduling      Called from main.c to set up/prepare scheduling
  */
+#include <sdtio.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
@@ -445,7 +446,7 @@ static void balance_queues(minix_timer_t *tp)
  				}
  			}
  			if (old_priority != rmp->priority) {
- 				schedule_process(rmp);
+ 				schedule_process(rmp,SCHEDULE_CHANGE_ALL);
  			}
  		}
  	}
