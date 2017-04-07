@@ -432,7 +432,7 @@ static void balance_queues(minix_timer_t *tp)
  		}
  	}
 
- 	lucky = 1;
+ 	lucky = nTickets ? rand() % nTickets : 0;
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
  				USER_Q == rmp->priority) {
