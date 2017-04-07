@@ -409,7 +409,7 @@ static void balance_queues(minix_timer_t *tp)
  /*==========================================================================*
   *				do_lottery				     *
   *===========================================================================*/
- PUBLIC int do_lottery()
+ int do_lottery()
  {
  	struct schedproc *rmp;
  	int proc_nr;
