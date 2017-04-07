@@ -466,7 +466,7 @@ static void balance_queues(minix_timer_t *tp)
  /*===========================================================================*
   *				set_priority				     *
   *===========================================================================*/
- PUBLIC int set_priority(int ntickets, struct schedproc* p)
+  int set_priority(int ntickets, struct schedproc* p)
  {
  	int add;
 
