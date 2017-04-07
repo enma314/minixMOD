@@ -33,6 +33,7 @@ EXTERN struct schedproc {
 	bitchunk_t cpu_mask[BITMAP_CHUNKS(CONFIG_MAX_CPUS)]; /* what CPUs is the
 								process allowed
 								to run on */
+	unsigned nice;
 	unsigned ticketsNum;
 
 } schedproc[NR_PROCS];
