@@ -14,6 +14,7 @@ int do_stop_scheduling(message *m_ptr);
 int do_nice(message *m_ptr);
 void init_scheduling(void);
 int do_lottery();
+int set_priority(int ntickets, struct schedproc* p);
 
 
 /* utility.c */

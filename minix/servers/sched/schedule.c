@@ -298,8 +298,9 @@ int do_nice(message *m_ptr)
 	rmp = &schedproc[proc_nr_n];
 	nice = m_ptr->m_pm_sched_scheduling_set_nice.endpoint;
 
+	/*
 	if ((rv = nice_to_priority(nice, &new_q)) != OK)
- 		return rv;
+ 		return rv;*/
 
 	new_q = m_ptr->m_pm_sched_scheduling_set_nice.maxprio;
 	if (new_q >= NR_SCHED_QUEUES) {
@@ -469,7 +470,7 @@ static void balance_queues(minix_timer_t *tp)
  /*===========================================================================*
   *				set_priority				     *
   *===========================================================================*/
-  int set_priority(int ntickets, struct schedproc* p)
+int set_priority(int ntickets, struct schedproc* p)
  {
  	int add;
 

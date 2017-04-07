@@ -49,6 +49,7 @@ int do_getrusage(void);
 int do_helloworld(void);
 int do_masbilletes(int _valor);
 
+
 /* schedule.c */
 void sched_init(void);
 int sched_start_user(endpoint_t ep, struct mproc *rmp);
