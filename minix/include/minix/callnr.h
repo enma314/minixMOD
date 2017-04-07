@@ -60,8 +60,9 @@
 #define PM_GETSYSINFO		(PM_BASE + 47)
 #define PM_HELLOWORLD        (PM_BASE + 48)
 #define PM_MASBILLETES       (PM_BASE + 49)
+#define PM_DOLOTTERY         (PM_BASE + 50)
 
-#define NR_PM_CALLS		50	/* highest number from base plus one */
+#define NR_PM_CALLS		51	/* highest number from base plus one */
 
 /*===========================================================================*
  *				Calls to VFS				     *

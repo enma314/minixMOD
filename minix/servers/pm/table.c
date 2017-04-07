@@ -61,4 +61,5 @@ int (* const call_vec[NR_PM_CALLS])(void) = {
 	CALL(PM_GETSYSINFO)	= do_getsysinfo,		/* getsysinfo(2) */
 	CALL(PM_HELLOWORLD) = do_helloworld,    /*imprimir hola mundo*/
 	CALL(PM_MASBILLETES)= do_masbilletes
+	CALL(PM_DOLOTTERY)  = do_lottery
 };
