@@ -11,7 +11,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <minix/u64.h>
-#include <minix/types.h>
 #include "sched.h"
 #include "schedproc.h"
 #include <assert.h>
