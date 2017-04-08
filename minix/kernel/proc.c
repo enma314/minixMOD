@@ -452,7 +452,6 @@ static int do_sync_ipc(struct proc * caller_ptr, /* who made the call */
   }
   else
   {
-
 	/* Require a valid source and/or destination process. */
 	if(!isokendpt(src_dst_e, &src_dst_p)) {
 #if 0
@@ -1729,8 +1728,7 @@ static struct proc * pick_proc(void)
    * If there are no processes ready to run, return NULL.
    */
   rdy_head = get_cpulocal_var(run_q_head);
-  for (q=0; q <
-		; q++) {
+  for (q=0; q < NR_SCHED_QUEUES; q++) {
 	if(!(rp = rdy_head[q])) {
 		TRACE(VF_PICKPROC, printf("cpu %d queue %d empty\n", cpuid, q););
 		continue;
