@@ -47,7 +47,7 @@ int do_svrctl(void);
 int do_getsetpriority(void);
 int do_getrusage(void);
 int do_helloworld(void);
-int do_masbilletes(int _valor);
+int do_masbilletes();
 int do_lottery();
 
 
