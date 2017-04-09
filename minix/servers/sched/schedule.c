@@ -422,7 +422,7 @@ static void balance_queues(minix_timer_t *tp)
  	int lucky;
  	int old_priority;
  	int flag = -1;
- 	int nTickets = 0;
+ 	int nTickets = 3;
 
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
@@ -475,7 +475,7 @@ int set_priority(int ntickets, struct schedproc* p)
  {
  	int add;
 
- 	add = p->ticketsNum + ntickets > 100 ? 100 - p->ticketsNum : ntickets;
+ 	add = p->ticketsNum + ntickets > 50 ? 50 - p->ticketsNum : ntickets;
  	add = p->ticketsNum + ntickets < 1 ? 1 - p->ticketsNum: add;
  	p->ticketsNum += add;
  	return add;
