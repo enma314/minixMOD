@@ -417,7 +417,7 @@ static void balance_queues(minix_timer_t *tp)
  int realizar_loteria()
  {
  	struct schedproc *rmp;
-	int count17;
+	int procesos;
  	int proc_nr;
  	int rv;
  	int TicketGanador;
@@ -459,12 +459,12 @@ static void balance_queues(minix_timer_t *tp)
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
  			if (USER_Q == rmp->priority)
- 				count_17++;
+ 				procesos++;
  			else if (MAX_USER_Q == rmp->priority)
- 				count_16++;
+
  		}
  	}
- 	printf("En la cola 17: %d\n",count_17);
+ 	printf("En la cola 17: %d\n",procesos);
  	return nTickets ? flag : OK;
  }
 
