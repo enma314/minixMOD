@@ -417,6 +417,7 @@ static void balance_queues(minix_timer_t *tp)
  int realizar_loteria()
  {
  	struct schedproc *rmp;
+	int count17;
  	int proc_nr;
  	int rv;
  	int TicketGanador;
