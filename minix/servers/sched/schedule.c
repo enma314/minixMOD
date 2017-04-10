@@ -120,7 +120,7 @@ int do_noquantum(message *m_ptr)
 	}
 
 
- 	if ((rv = do_lottery()) != OK) {
+ 	if ((rv = realizar_loteria()) != OK) {
  		return rv;
  	}
 
@@ -182,7 +182,7 @@ int do_start_scheduling(message *m_ptr)
 	rmp->endpoint     = m_ptr->m_lsys_sched_scheduling_start.endpoint;
 	rmp->parent       = m_ptr->m_lsys_sched_scheduling_start.parent;
 	rmp->max_priority = m_ptr->m_lsys_sched_scheduling_start.maxprio;
-	rmp->ticketsNum   = 5;
+	rmp->ticketsNum   = 3;
 
  	/* Find maximum priority from nice value */
 		/*
@@ -318,7 +318,7 @@ int do_nice(message *m_ptr)
  	/* rmp->max_priority = rmp->priority = new_q; */
  	rmp->priority = USER_Q;
  	/* rmp->nice = nice; */
- 	rmp->nice = set_priority(nice, rmp);
+ 	rmp->nice = masbilletes(nice, rmp);
 
 	/* Update the proc entry and reschedule the process */
 	rmp->max_priority = rmp->priority = new_q;
@@ -332,7 +332,7 @@ int do_nice(message *m_ptr)
 		rmp->ticketsNum	=   old_ticketsNum;
 	}
 
-	return do_lottery();
+	return realizar_loteria();
 }
 
 /*===========================================================================*
@@ -412,17 +412,17 @@ static void balance_queues(minix_timer_t *tp)
 }
 
  /*==========================================================================*
-  *				do_lottery				     *
+  *				realizar_loteria				     *
   *===========================================================================*/
- int do_lottery()
+ int realizar_loteria()
  {
  	struct schedproc *rmp;
  	int proc_nr;
  	int rv;
- 	int lucky;
+ 	int TicketGanador;
  	int old_priority;
  	int flag = -1;
- 	int nTickets = 3;
+ 	int nTickets = 0;
 
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
@@ -432,21 +432,21 @@ static void balance_queues(minix_timer_t *tp)
  		}
  	}
 
- 	lucky = nTickets ? random() % nTickets : 0;
+ 	TicketGanador = nTickets ? random() % nTickets : 0;
+
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp) &&
  				USER_Q == rmp->priority) {
  			old_priority = rmp->priority;
- 			/* rmp->priority = USER_Q; */
- 			if (lucky >= 0) {
- 				lucky -= rmp->ticketsNum;
- 				/*
- 				   printf("lucky - %d = %d\n", rmp->ticketsNum, lucky);
- 				 */
- 				if (lucky < 0) {
+
+ 			if (TicketGanador >= 0) {
+ 				TicketGanador -= rmp->ticketsNum;
+
+
+ 				if (TicketGanador < 0) {
  					rmp->priority = MAX_USER_Q;
  					flag = OK;
- 					/* printf("endpoint %d\n", rmp->endpoint); */
+
  				}
  			}
  			if (old_priority != rmp->priority) {
@@ -454,7 +454,7 @@ static void balance_queues(minix_timer_t *tp)
  			}
  		}
  	}
- 	/*
+
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
  			if (USER_Q == rmp->priority)
@@ -463,20 +463,23 @@ static void balance_queues(minix_timer_t *tp)
  				count_16++;
  		}
  	}
- 	printf("in 16: %d; in 17: %d\n", count_16, count_17);  	*/
- 	/* printf("do_lottery OK? %d lucky=%d\n", flag, lucky); */
+ 	printf("En la cola 17: %d\n",count_17);
  	return nTickets ? flag : OK;
  }
 
  /*===========================================================================*
-  *				set_priority				     *
+  *				masbilletes		*
   *===========================================================================*/
-int set_priority(int ntickets, struct schedproc* p)
+	/*esta funcion recive el numero de tickes y el proceso al cual sera asignado
+	los nuevos tickes atendiendo a su prioridad*/
+int masbilletes(int ntickets, struct schedproc* p)
  {
  	int add;
 
+  /*Limite de tickes igualado a 50*/
  	add = p->ticketsNum + ntickets > 50 ? 50 - p->ticketsNum : ntickets;
  	add = p->ticketsNum + ntickets < 1 ? 1 - p->ticketsNum: add;
  	p->ticketsNum += add;
  	return add;
+
  }
