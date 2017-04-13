@@ -425,10 +425,27 @@ static void balance_queues(minix_timer_t *tp)
  	int flag = -1;
  	int nTickets = 0;
 
+	srand(time(NULL));   // should only be called once
+	int r = rand() % 3;
+
+
  	for (proc_nr=0, rmp=schedproc; proc_nr < NR_PROCS; proc_nr++, rmp++) {
  		if ((rmp->flags & IN_USE) && PROCESS_IN_USER_Q(rmp)) {
  			if (USER_Q == rmp->priority) {
- 				nTickets += rmp->ticketsNum;
+
+				if (r==0)
+				{
+					nTickets += 50;
+				}
+ 				if (r==1)
+				{
+					nTickets += 20; 
+				}
+				if (r==2)
+				{
+					nTickets += 3;
+				}
+
  			}
  		}
  	}
